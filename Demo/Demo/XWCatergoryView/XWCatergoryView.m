@@ -30,7 +30,12 @@
 @implementation XWCatergoryView
 
 - (void)dealloc{
-    [_scrollView removeObserver:self forKeyPath:@"contentOffset"];
+    @try {
+        [_scrollView removeObserver:self forKeyPath:@"contentOffset"];
+    }
+    @catch(NSException *e) {
+        NSLog(@"gh- maybe  add the keypath num is not equal to remove");
+    }
 }
 
 #pragma mark - initialize methods
